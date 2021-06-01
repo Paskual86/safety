@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views"  
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                    xmlns:converters="clr-namespace:SafetyBP.Converters" 
+                    xmlns:custom="clr-namespace:SafetyBP.Domain.Enums;assembly=SafetyBP.Domain"
+                    x:Class="SafetyBP.Views.Modules.CheckLists.CheckListQuestionaryPage"
+                    Title="{Binding Title}">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <converters:QuestionaryTypeConverter x:Key="QuestionaryTypeConverter"/>
+        <custom:ButtonYesNoTypes x:Key="ButtonYesNoValue"/>
+        <custom:CheckListQuestionTypes x:Key="CheckListQuestionTypes"/>
+    </ContentPage.Resources>
+
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="10">
+                <Label Text="{Binding Sector }" TextTransform="Uppercase" TextColor="{DynamicResource NavigationPrimary}"/>
+                <Label Text="{Binding NameCheckList }" TextTransform="Uppercase"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding LabelDueDatetime, StringFormat='{0} /'}" TextColor="{DynamicResource NavigationPrimary}" />
+                            <Span Text="{Binding DueDateTime, StringFormat= ' {0:dd-MM-yyyy}'}" TextColor="{DynamicResource NavigationPrimary}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+                
+                <ScrollView>
+                    <ListView x:Name="listViewPreguntas" ItemsSource="{Binding Questions}" SelectionMode="None" HasUnevenRows="True" SeparatorColor="{DynamicResource NavigationPrimary}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="{ Binding ColorBackgroundQuestion }" Padding="10" Margin="0,0,0,10" >
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Model.Name}" Padding="5"/>
+                                            <!-- Yes \ No question -->
+                                            <StackLayout HorizontalOptions="FillAndExpand"
+                                                                IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 1 }" 
+                                                                Orientation="Horizontal" HeightRequest="40">
+
+                                                <Button Text="{Binding ButtonPositiveText}" BackgroundColor="{Binding ButtonPositiveColor }" TextColor="{StaticResource Blanco}"
+                                                    Command="{Binding ButtonPositiveCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+                                                <Button Text="{Binding ButtonNegativeText }" BackgroundColor="{Binding ButtonNegativeColor }" TextColor="{StaticResource Blanco}"
+                                                        Command="{Binding ButtonNegativeCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            </StackLayout>
+
+                                            <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 2 }" HeightRequest="40" >
+                                                <Picker x:Name="Picker" ItemsSource="{Binding Values }" ItemDisplayBinding="{Binding Description}" SelectedItem="{Binding ValueSelected}" />
+                                            </StackLayout>
+
+                                            <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 3 }">
+                                                <Entry Text="{Binding Respuesta}"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <Image Source="{DynamicResource PUNTOS}" Aspect="AspectFit" HeightRequest="32" HorizontalOptions="End">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.OnMenuCommand}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+                <Button Text="{Binding LabelButtonFinalize}" Grid.Row="4" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource Verde}" TextColor="{StaticResource Blanco}" />
+        </StackLayout>
+    </ContentPage.Content>
+</views:ToolbarPage>

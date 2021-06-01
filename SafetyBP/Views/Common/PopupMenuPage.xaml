@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage 
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SafetyBP.Views.Common.PopupMenuPage">
+    <Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,100,0,0" RowSpacing="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <ImageButton x:Name="imgbtnCerrar" 
+                     Source="{DynamicResource CERRAR}" 
+                     BackgroundColor="Transparent" 
+                     Aspect="AspectFill" 
+                     HeightRequest="64" 
+                     WidthRequest="64" 
+                     HorizontalOptions="CenterAndExpand" 
+                     Command="{Binding OnCloseCommand}" />
+
+        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+            <ImageButton Source="{Binding IconNaButton}" 
+                         IsVisible="{Binding ShowNAButton}"
+                     BackgroundColor="Transparent" 
+                     HeightRequest="120" 
+                     WidthRequest="120"
+                     Grid.Row="3" 
+                     Grid.Column="1" 
+                     Command="{Binding OnNACommand}"/>
+            <ImageButton Source="{DynamicResource CHECK}" 
+                     IsVisible="{Binding ShowCheckButton}"
+                     BackgroundColor="Transparent" 
+                     Aspect="AspectFill" 
+                     HeightRequest="120" 
+                     WidthRequest="120" 
+                     HorizontalOptions="CenterAndExpand" 
+                     Command="{Binding OnCheckCommand}"/>
+            
+            <ImageButton x:Name="imgbtnComentario" 
+                     Source="{DynamicResource COMENTARIO}" 
+                         IsVisible="{Binding ShowCommentButton}"
+                     BackgroundColor="Transparent" 
+                     HeightRequest="120" 
+                     WidthRequest="120" 
+                     Command="{Binding OnCommentsCommand}"/>
+            <ImageButton x:Name="imgbtnFoto" 
+                     Source="{DynamicResource CAMARA}" 
+                     IsVisible="{Binding ShowCameraButton}"
+                     BackgroundColor="Transparent" 
+                     HeightRequest="120" 
+                     WidthRequest="120" 
+                     Command="{Binding OnCameraCommand}"/>
+        </StackLayout>
+    </Grid>
+</popup:PopupPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"    
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.FotoComentarioPage">
+
+    <!-- Padding: Left, Top, Right, Bottom -->
+    <Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,100,0,0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> 
+        </Grid.ColumnDefinitions>
+        
+        <ImageButton x:Name="imgbtnCerrar" Source="{DynamicResource CERRAR}" Clicked="btnClick" BackgroundColor="Transparent" Aspect="AspectFill" HeightRequest="64" WidthRequest="64" HorizontalOptions="CenterAndExpand"/>
+        
+        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+            <ImageButton x:Name="imgbtnComentario" Source="{DynamicResource COMENTARIO}" Clicked="btnClick" BackgroundColor="Transparent" HeightRequest="120" WidthRequest="120" Padding="0,-70,15,0"/>
+            <ImageButton x:Name="imgbtnFoto" Source="{DynamicResource CAMARA}" Clicked="btnClick" BackgroundColor="Transparent" HeightRequest="120" WidthRequest="120"  Padding="15,-70,0,0"/>
+        </StackLayout>
+        <Image x:Name="imagen" Grid.Row="3"/>
+    </Grid>
+
+</popup:PopupPage>

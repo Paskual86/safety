@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SafetyBP.Views.Common.ToolbarPageWithQr"
+             Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnHome" IconImageSource="{StaticResource HOME}" Clicked="btnHome_Clicked"/>
+        <ToolbarItem x:Name="btnCallQr" IconImageSource="{StaticResource QRICONWHITE}" Clicked="btnCallQr_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

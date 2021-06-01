@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:PopupMenuPage  xmlns:views="clr-namespace:SafetyBP.Views.Common" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SafetyBP.Views.Modules.SpontaneousDiversions.SpontaneousDiversionPopupMenuPage">
+</views:PopupMenuPage>

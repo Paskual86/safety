@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions" xmlns:local="clr-namespace:SafetyBP.Controls" xmlns:local1="clr-namespace:SafetyBP.EventsTrigger"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.LoginPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource Login}" VerticalOptions="FillAndExpand" Padding="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="{DynamicResource LOGINLOGO}" WidthRequest="250"/>
+            <ie:IconEntry x:Name="entryUsername" Text="{Binding Username}" 
+                          Placeholder="Usuario" 
+                          Icon="{StaticResource USERNAME}" 
+                          Grid.Row="2">
+                <Entry.TextColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Blanco}"                 
+                                iOS="{StaticResource Login}">
+                    </OnPlatform>
+                </Entry.TextColor>
+                <Entry.PlaceholderColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Blanco}"                 
+                                iOS="{StaticResource Login}">
+                    </OnPlatform>
+                </Entry.PlaceholderColor>
+                <Entry.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Login}"                 
+                                iOS="{StaticResource Blanco}">
+                    </OnPlatform>
+                </Entry.BackgroundColor>
+            </ie:IconEntry>
+            <ie:IconEntry x:Name="entryPassword" Text="{Binding Password}" 
+                          Placeholder="Contraseña" 
+                          Icon="{StaticResource PASSWORD}" 
+                          IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
+                          Grid.Row="4">
+                <Entry.TextColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Blanco}"                 
+                                iOS="{StaticResource Login}">
+                    </OnPlatform>
+                </Entry.TextColor>
+                <Entry.PlaceholderColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Blanco}"                 
+                                iOS="{StaticResource Login}">
+                    </OnPlatform>
+                </Entry.PlaceholderColor>
+                <Entry.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color"
+                                Android="{StaticResource Login}"                 
+                                iOS="{StaticResource Blanco}">
+                    </OnPlatform>
+                </Entry.BackgroundColor>
+            </ie:IconEntry>
+            <ImageButton VerticalOptions="Center"
+               HeightRequest="32"
+                BackgroundColor="Transparent"
+               HorizontalOptions="End"
+               Source="ic_eye_hide"
+                Margin="0,0,10,0"
+                         Grid.Row="4">
+                <ImageButton.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <local1:ShowPasswordTriggerAction ShowIcon="ic_eye"
+                                                              HideIcon="ic_eye_hide"
+                                                              x:Name="ShowPasswordActualTrigger"/>
+                    </EventTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+
+            <Button x:Name="btnValidarCredenciales" Text="Ingresar" Clicked="btnValidarCredenciales_Clicked" IsEnabled="{Binding IsEnabled}" BackgroundColor="{StaticResource BotonLogin}" TextColor="{StaticResource Blanco}" Grid.Row="6"/>
+        </Grid>        
+    </ContentPage.Content>
+</ContentPage>

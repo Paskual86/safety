@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.AccionesCorrectivasTareasPage"
+             xmlns:converters="clr-namespace:SafetyBP.Converters"
+             xmlns:viewModel="SafetyBP.ViewModels.AccionesCorrectivasTareasViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <converters:EstadoConverter x:Key="EstadoConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="10">
+                <Label TextColor="{DynamicResource Naranja}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="SECTOR/"/>
+                            <Span Text="{Binding Topic.Sector.Name, StringFormat= ' {0}'}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Row="2"  TextColor="{DynamicResource Naranja}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding LabelDueDatetime, StringFormat= '{0} / '}"/>
+                            <Span Text="{Binding Topic.DueDate, StringFormat= ' {0:dd-MM-yyyy}'}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="{Binding Topic.Number, StringFormat='AC-{0}'}" TextColor="{StaticResource Naranja}"/>
+                <Label Text="{Binding Topic.Reason}"/>
+            </StackLayout>
+            <ListView x:Name="listViewTareas" ItemsSource="{Binding Tasks}" SelectionMode="None" HasUnevenRows="True" SeparatorColor="{DynamicResource Naranja}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgBtnCheckBox" Source="{Binding Status, Converter={StaticResource EstadoConverter}}" BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="64" HeightRequest="64">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewTareas}, Path=BindingContext.UpdateTaskCommand}" CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="CenterAndExpand"/>
+                                <Image x:Name="igmBtnPregunta" Source="{DynamicResource PUNTOS}" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="32" Grid.Column="2">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewTareas}, Path=BindingContext.OnMenuCommand}" CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ToolbarPage>

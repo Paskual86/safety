@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.MenuCaminantesPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <Image Source="{StaticResource USERPROFILE}" HeightRequest="30" IsVisible="{Binding MenuConfigurationIsVisible}" HorizontalOptions="Start" Margin="0,0,10,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnImageNameTapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="btnRefresh" Source="{StaticResource REFRESH}" HeightRequest="30" Margin="0,0,10,0" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RefreshAction" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image Source="{StaticResource HEADERLOGO}" HeightRequest="40" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            
+            
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Image Source="{StaticResource QRICONBLACK}" HeightRequest="30" Margin="0,0,10,0" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                <Image Source="{StaticResource LOGOUT}" HeightRequest="30" Margin="0,0,10,0" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="0,0,0,0">
+            <ListView x:Name="listViewMenuItems" ItemsSource="{Binding MenuItems}" ItemTapped="listViewMenuItems_ItemTapped" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="{Binding BackgroundColor}">
+                                <Grid RowSpacing="0" Padding="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="15"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <controls:CircleImage Source="{Binding Imagen}" FillColor="{Binding BackgroundColor}" Aspect="AspectFit" BorderThickness="1" WidthRequest="40" HeightRequest="40"/>
+                                    <Label Text="{Binding Text}" TextColor="{Binding TextColor}" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="{DynamicResource FORWARDBLANCO}" Aspect="AspectFit" WidthRequest="32" HeightRequest="24" Grid.Column="3" VerticalOptions="CenterAndExpand"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

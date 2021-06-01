@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ToolbarPage 
+    xmlns:views="clr-namespace:SafetyBP.Views" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="SafetyBP.Views.TaskBoardListPage"
+    xmlns:viewModel="SafetyBP.ViewModels.TaskBoardListPage"
+    Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listViewSectores" ItemsSource="{Binding TaskDetails}" ItemTapped="listViewSectores_ItemTapped" HasUnevenRows="True" SeparatorColor="{DynamicResource Azul}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Text="{Binding Name}" Grid.Column="1"/>
+                                <Label Grid.Row="2" Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding LabelStartDatetime, Source={RelativeSource AncestorType={x:Type viewModel:TaskBoardListPage}}, StringFormat= '{0} / '}" TextColor="{DynamicResource AzulFrancia}" />
+                                            <Span Text="{Binding StartDateTime, StringFormat= ' {0:dd-MM-yyyy}'}" TextColor="{DynamicResource AzulFrancia}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="3" Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding LabelDueDatetime, Source={RelativeSource AncestorType={x:Type viewModel:TaskBoardListPage}}, StringFormat= '{0} / '}" TextColor="{DynamicResource AzulFrancia}" />
+                                            <Span Text="{Binding EndDateTime, StringFormat= ' {0:dd-MM-yyyy}'}" TextColor="{DynamicResource AzulFrancia}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Image Source="{StaticResource FORWARDAZULFRANCIA}" Aspect="AspectFit" WidthRequest="32" HeightRequest="24" Grid.Row="2" Grid.Column="2" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</views:ToolbarPage>

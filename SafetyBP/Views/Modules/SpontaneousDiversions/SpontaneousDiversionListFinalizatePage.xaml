@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ToolbarPage 
+    xmlns:views="clr-namespace:SafetyBP.Views"                    
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="SafetyBP.Views.Modules.SpontaneousDiversions.SpontaneousDiversionListFinalizate"
+    Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <StackLayout Orientation="Horizontal" Margin="5,10,0,0">
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HeightRequest="55" HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding NameOfRound, Mode=TwoWay}" Placeholder="{Binding NameOfRoundPlaceHolder}" HorizontalOptions="FillAndExpand" FontSize="Medium" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" HeightRequest="45" Margin="10,10,0,10" >
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource GrisOscuro}" TextColor="{StaticResource Blanco}" WidthRequest="150" TextTransform="Uppercase" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <ListView x:Name="lvDiversions" ItemsSource="{Binding ListDiversions}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Margin="0,5,0,5" BackgroundColor="{Binding Color}">
+                                    <Label Text="{Binding Value.Reason}" HorizontalOptions="StartAndExpand" Margin="5,0,0,0"/>
+                                    <Label Text="{Binding Value.Sector.Sector}" HorizontalOptions="StartAndExpand" Margin="5,0,0,0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</views:ToolbarPage>

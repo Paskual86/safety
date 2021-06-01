@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SafetyBP.Views.Common.PopupCommentPage">
+    
+    <Grid VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,100,0,0" Padding="5" RowSpacing="0" BackgroundColor="White" WidthRequest="300" HeightRequest="200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Editor x:Name="editorComentario" Text="{Binding Text}" Grid.Row="0" Placeholder="{Binding LabelPlaceholderText}" HeightRequest="100"/>
+
+        <StackLayout Grid.Row="1" Orientation="Vertical">
+            <StackLayout>
+                <Button Text="{Binding SpeachToTextLabel}" Command="{Binding SpeachToTextCommand}" BackgroundColor="{DynamicResource AzulFrancia}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            <StackLayout  Orientation="Horizontal">
+                <Button Text="{Binding LabelButtonBack}" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" />
+                <Button Text="{Binding LabelButtonSave}" Command="{Binding SaveCommand}" CommandParameter="{Binding .}" BackgroundColor="{DynamicResource Verde}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+        
+    </Grid>
+</popup:PopupPage>

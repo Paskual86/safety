@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            
+            <!--Colores-->
+            <Color x:Key="NavigationPrimary">#eaf0e5</Color> <!--Blanco-->
+            <Color x:Key="Naranja">#f26322</Color>
+            <Color x:Key="Amarillo">#f2bf56</Color>
+            <Color x:Key="Verde">#259b24</Color>
+            <Color x:Key="Blanco">#f2f2f2</Color>
+            <Color x:Key="Gris">#F1F1F1</Color>
+            <Color x:Key="GrisOscuro">#403f3e</Color>
+            <Color x:Key="Azul">#20314a</Color>
+            <Color x:Key="Rojo">#ff0000</Color>
+            <Color x:Key="Negro">#000000</Color>
+            <Color x:Key="Login">#21324c</Color>
+            <Color x:Key="BotonLogin">#f3bc5c</Color>
+            <Color x:Key="AzulFrancia">#1271fc</Color>
+            
+            <!--Iconos-->
+            <x:String x:Key="CIRCLE_IMAGE">forward.png</x:String>
+            <x:String x:Key="FORWARD_ICON">forward.png</x:String>
+            
+            <x:String x:Key="FORWARD">forward.png</x:String>
+            <x:String x:Key="FORWARDBLANCO">forwardblanco.png</x:String>
+            <x:String x:Key="FORWARDAZUL">forwardazul.png</x:String>
+            <x:String x:Key="FORWARDNARANJA">forwardnaranja.png</x:String>
+            <x:String x:Key="FORWARDAZULFRANCIA">forwardBlue.png</x:String>
+            <x:String x:Key="PERSON">person.png</x:String>
+            <x:String x:Key="CHECK">check.png</x:String>
+            <x:String x:Key="UNCHECK">uncheck.png</x:String>
+            <x:String x:Key="NAVALUE">navalue.png</x:String>
+            <x:String x:Key="MEMORY">memory.png</x:String>
+            <x:String x:Key="INPUT">input.png</x:String>
+            <x:String x:Key="BALLOT">ballot.png</x:String>
+            <x:String x:Key="PUNTOS">puntos.png</x:String>
+            <x:String x:Key="CAMARA">camara.png</x:String>
+            <x:String x:Key="COMENTARIO">comentario.png</x:String>
+            <x:String x:Key="CERRAR">cerrar.png</x:String>
+            <x:String x:Key="LOGINLOGO">loginlogo.png</x:String>
+            <x:String x:Key="HEADERLOGO">headerlogo.png</x:String>
+            <x:String x:Key="HOME">home.png</x:String>
+            <x:String x:Key="USERNAME">username.png</x:String>
+            <x:String x:Key="PASSWORD">password.png</x:String>
+            <x:String x:Key="SECTOR">Sector.png</x:String>
+            <x:String x:Key="TASK">task.png</x:String>
+            <x:String x:Key="CHECKLISTICONSECTOR">CheckListIcon.png</x:String>
+            <x:String x:Key="CHECKLISTICON">CheckListIcon2.png</x:String>
+            <x:String x:Key="CHECKLISTNARROW">ChecklistNarrow.png</x:String>
+            <x:String x:Key="CHECKLISTNACHECKED">CheckNAChecked.png</x:String>
+            <x:String x:Key="QRICONBLACK">codigoQR.png</x:String>
+            <x:String x:Key="QRICONWHITE">QRCodeWhite.png</x:String>
+            <x:String x:Key="NAICONVALUE">navalue.png</x:String>
+            <x:String x:Key="DEICON">DesviosEspontaneos.png</x:String>
+            <x:String x:Key="USERPROFILE">UserProfile.png</x:String>
+            <x:String x:Key="PASSWORD2">padlock.png</x:String>
+            <x:String x:Key="LOGOUT">logout.png</x:String>
+            <x:String x:Key="REFRESH">refresh.png</x:String>
+
+            <!--NavigationPage-->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="{DynamicResource Blanco}" />
+            </Style>
+
+            <!--Controles-->
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="{DynamicResource Negro}"/>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HeightRequest" Value="60"/>
+            </Style>
+
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource Gris}"/>
+            </Style>
+            
+        </ResourceDictionary>
+        
+    </Application.Resources>
+    
+</Application>

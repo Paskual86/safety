@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views" 
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                    xmlns:converters="clr-namespace:SafetyBP.Converters"
+                    x:Class="SafetyBP.Views.TaskBoardDetails"
+                    Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <converters:PriorityConverter x:Key="PriorityConverter"/>
+        <converters:PriorityColorConverter x:Key="PriorityColorConverter"/>
+        <converters:TipoChecklistVisibleConverter x:Key="TipoChecklistVisibleConverter"/>
+        <converters:TipoChecklistTextConverter x:Key="TipoChecklistTextConverter"/>
+        <converters:TipoChecklistItemSourceConverter x:Key="TipoChecklistItemSourceConverter"/>
+        <converters:CheckListStatusConverter x:Key="CheckListStatusConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout Padding="10">
+                <Label Text="{Binding Task.Sector }" TextTransform="Uppercase" TextColor="{DynamicResource AzulFrancia}"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding LabelDueDatetime, StringFormat='{0} /'}" TextColor="{DynamicResource AzulFrancia}" />
+                            <Span Text="{Binding TaskDetails.Model.EndDateTime, StringFormat= ' {0:dd-MM-yyyy}'}" TextColor="{DynamicResource AzulFrancia}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{Binding TaskDetails.Model.Priority, Converter={StaticResource PriorityConverter}, ConverterParameter=TaskDetails.Model.Priority}" TextColor="{Binding TaskDetails.Model.Priority, Converter={StaticResource PriorityColorConverter}, ConverterParameter=TaskDetails.Priority}"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding TaskDetails.Model.Code, StringFormat='{0} /'}" TextColor="{DynamicResource Negro}" FontAttributes="Bold" FontSize="18" />
+                            <Span Text="{Binding TaskDetails.Model.Name, StringFormat= ' {0}'}" TextColor="{DynamicResource Negro}" FontAttributes="Italic" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <StackLayout Orientation="Horizontal" Padding="5,0,70,0">
+                    <Button Text="{Binding LabelButtonMoreInformation}" Command="{Binding ShowMoreInformationCommand}" CommandParameter="{Binding TaskDetails}" BackgroundColor="{DynamicResource AzulFrancia}" TextColor="{StaticResource Blanco}" />
+                </StackLayout>
+            </StackLayout>
+            <ListView x:Name="listViewPreguntas" ItemsSource="{Binding CheckList}" SelectionMode="None" HasUnevenRows="True" SeparatorColor="{DynamicResource Azul}" HeightRequest="350">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowSpacing="0" Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image x:Name="imgBtnCheckBox" Source="{Binding Status, Converter={StaticResource CheckListStatusConverter}, ConverterParameter=Status, Mode=TwoWay}" BackgroundColor="Transparent" Aspect="AspectFit" WidthRequest="64" HeightRequest="64" Grid.Column="0" Grid.RowSpan="2" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                    <Label Text="{Binding Name}" TextColor="{DynamicResource Azul}" Grid.Column="1" Grid.RowSpan="2"/>
+
+                                    <Image Source="{DynamicResource PUNTOS}" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="32" Grid.Column="2" Grid.RowSpan="2">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.AnswerCheckListCommand}" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+
+</views:ToolbarPage>

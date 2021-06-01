@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage 
+    xmlns:views="clr-namespace:SafetyBP.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="SafetyBP.Views.TaskBoardPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listViewObjetos" ItemsSource="{Binding Tasks}" ItemTapped="listViewObjetos_ItemTapped" HasUnevenRows="True" SeparatorColor="{DynamicResource AzulFrancia}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" Padding="20">
+                                
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <controls:CircleImage Source="{DynamicResource PERSON}" FillColor="{DynamicResource AzulFrancia}" Aspect="AspectFit" BorderThickness="1" WidthRequest="40" HeightRequest="40"/>
+
+                                <Label Text="{Binding Sector}" Grid.Column="1" VerticalOptions="CenterAndExpand"/>
+                                <Image Source="{StaticResource FORWARDAZULFRANCIA}" Aspect="AspectFit" WidthRequest="32" HeightRequest="24" Grid.Column="2" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ToolbarPage>

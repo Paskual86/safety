@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"    
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.ComentarioPage">
+
+    <!-- Padding: Left, Top, Right, Bottom -->
+    <Grid VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,100,0,0" Padding="5" RowSpacing="0" BackgroundColor="White" WidthRequest="300" HeightRequest="200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Editor x:Name="editorComentario" Text="{Binding Text}" Grid.Row="0" Placeholder="{Binding LabelPlaceholderText}" HeightRequest="100"/>
+
+        <StackLayout Grid.Row="1" Orientation="Vertical">
+            <StackLayout>
+                <Button Text="{Binding SpeachToTextLabel}" Command="{Binding SpeachToTextCommand}" BackgroundColor="{DynamicResource AzulFrancia}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="btnVolver" Text="{Binding LabelButtonBack}" Command="{Binding VolverCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="btnGuardar" Text="{Binding LabelButtonSave}" Command="{Binding GuardarComentarioCommand}" CommandParameter="{Binding .}" BackgroundColor="{DynamicResource Verde}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+
+        
+    </Grid>
+
+</popup:PopupPage>

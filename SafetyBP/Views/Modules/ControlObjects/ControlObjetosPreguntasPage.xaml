@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.ControlObjetosPreguntasPage"
+             xmlns:converters="clr-namespace:SafetyBP.Converters" 
+             xmlns:controls="clr-namespace:SafetyBP.Controls"
+             Title="{Binding Title}"
+             x:Name="CtrlObjetosPreguntasPage">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <converters:TipoPreguntaConverter x:Key="TipoPreguntaConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="10">
+                <Label TextColor="{DynamicResource Azul}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Survey.Sector.Name, StringFormat='{0}/'}"/>
+                            <Span Text="{Binding Survey.Sector.Place, StringFormat= ' {0}'}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{Binding Survey.Name}"/>
+                <Label TextColor="{DynamicResource Azul}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding LabelDueDatetime, StringFormat= '{0} / '}"/>
+                            <Span Text="{Binding Survey.Date, StringFormat= ' {0:dd-MM-yyyy}'}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <ListView x:Name="listViewPreguntas" ItemsSource="{Binding Questions}" SelectionMode="None" HasUnevenRows="True" SeparatorColor="{DynamicResource Azul}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                        <ViewCell x:Name="viewCellPregunta">
+                            <Grid RowSpacing="0" Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Question}" TextColor="{DynamicResource Azul}"/>
+                                <StackLayout Grid.Row="1">
+                                    <Entry Text="{Binding Answer}" IsVisible="{Binding Type, Converter={StaticResource TipoPreguntaConverter}, ConverterParameter=entry}"/>
+                                    <controls:NullableDatePicker NullableDate="{Binding Answer}" IsVisible="{Binding Type, Converter={StaticResource TipoPreguntaConverter}, ConverterParameter=datepicker}" Format="dd-MM-yyyy"/>
+                                </StackLayout>
+                                <Image Source="{DynamicResource PUNTOS}" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="32" Grid.Row="1" Grid.Column="1">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.OnMenuCommand}" CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnInactivo" Text="{Binding LabelButtonInactive}" Command="{Binding InactivoCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Amarillo}" TextColor="{DynamicResource Blanco}" />
+                <Button x:Name="btnSiguiente" Text="{Binding LabelButtonNext}" Command="{Binding ResponderPreguntasCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource Verde}" TextColor="{DynamicResource Blanco}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ToolbarPage>

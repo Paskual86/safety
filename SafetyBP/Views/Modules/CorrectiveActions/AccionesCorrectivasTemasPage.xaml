@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SafetyBP.Views.AccionesCorrectivasTemasPage"
+             xmlns:viewModel="SafetyBP.ViewModels.AccionesCorrectivasTemasViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listViewTemas" ItemsSource="{Binding Topics}" ItemTapped="listViewTemas_ItemTapped" HasUnevenRows="True" SeparatorColor="{DynamicResource Naranja}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Number, StringFormat='AC-{0}'}" TextColor="{StaticResource Naranja}"/>
+                                <Label Text="{Binding Reason}" Grid.Row="1"/>
+                                <Label Grid.Row="2"  TextColor="{DynamicResource Naranja}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding LabelDueDatetime, Source={RelativeSource AncestorType={x:Type viewModel:AccionesCorrectivasTemasViewModel}}, StringFormat= '{0} / '}"/>
+                                            <Span Text="{Binding DueDate, StringFormat= ' {0:dd-MM-yyyy}'}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Image Source="{StaticResource FORWARDNARANJA}" Grid.RowSpan="3" Aspect="AspectFit" WidthRequest="32" HeightRequest="24" Grid.Column="2" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ToolbarPage>

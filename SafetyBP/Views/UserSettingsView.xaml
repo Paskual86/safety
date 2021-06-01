@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views" 
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ie="clr-namespace:IconEntry.FormsPlugin.Abstractions;assembly=IconEntry.FormsPlugin.Abstractions" xmlns:local="clr-namespace:SafetyBP.Controls" xmlns:local1="clr-namespace:SafetyBP.EventsTrigger"
+                    x:Class="SafetyBP.Views.UserSettings"
+                    Title="{Binding Title}">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 0, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <StackLayout>
+
+        <StackLayout Orientation="Horizontal" Margin="20,20,0,0">
+            <Image Source="{DynamicResource USERPROFILE}" BackgroundColor="Transparent" Aspect="AspectFit" HorizontalOptions="End" HeightRequest="32">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding OnMenuCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <StackLayout Orientation="Horizontal" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding FamilyUserName}" TextColor="{DynamicResource Azul}"/>
+            </StackLayout>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal" Margin="20,10,0,0">
+            <local:ImageEntry 
+                        TextColor="{StaticResource Azul}" 
+                        PlaceholderColor="{StaticResource Azul}"
+                        LineColor="{StaticResource Azul}"
+                        Image="{StaticResource USERPROFILE}" 
+                        ImageWidth ="16"
+                        ImageHeight ="16"
+                        Placeholder="User" 
+                        IsReadOnly="True"
+                        Text="{Binding Username}"
+                        HorizontalOptions="FillAndExpand"
+                Margin="0,0,40,0"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Margin="20,10,0,0">
+            <local:ImagePasswordEntry 
+                        TextColor="{StaticResource Azul}" 
+                        PlaceholderColor="{StaticResource Azul}"
+                        LineColor="{StaticResource Azul}"
+                        Image="{StaticResource PASSWORD2}" 
+                        Source="ic_eye_hide"
+                        ImageWidth ="16"
+                        ImageHeight ="16"
+                        Placeholder="Password" 
+                        Text="{Binding Password}"
+                        HorizontalOptions="FillAndExpand"
+                        IsReadOnly="True"
+                        IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
+                Margin="0,0,0,0">
+            </local:ImagePasswordEntry>
+            <ImageButton VerticalOptions="Center"
+               HeightRequest="32"
+               HorizontalOptions="End"
+                BackgroundColor="Transparent"
+               Source="ic_eye_hide"
+                         Margin="0,0,40,0">
+                <ImageButton.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <local1:ShowPasswordTriggerAction ShowIcon="ic_eye"
+                                                              HideIcon="ic_eye_hide"
+                                                              x:Name="ShowPasswordActualTrigger"/>
+                    </EventTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+        </StackLayout>
+
+        <StackLayout Padding="70,20,70,0">
+            <Button Text="{Binding CheckSpeedInternetConnectionButtonLabel}" Command="{Binding CheckSpeedInternetConnectionCommand}" BackgroundColor="{DynamicResource AzulFrancia}" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+        <StackLayout Padding="70,20,70,0">
+            <Button Text="{Binding CloseSessionButtonLabel}" Command="{Binding CloseSessionButtonCommand}" BackgroundColor="{DynamicResource AzulFrancia}" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+
+        <StackLayout IsVisible="false">
+            <Label Text="{Binding TranslateText}" TextColor="{DynamicResource Azul}"/>
+            <StackLayout Grid.Row="1" VerticalOptions="Center">
+                <Picker x:Name="Picker" 
+                    ItemsSource="{Binding Languages}" 
+                    ItemDisplayBinding="{Binding Value}"
+                    SelectedItem="{Binding SelectedLanguage}" 
+                    SelectedIndexChanged="Picker_SelectedIndexChanged" />
+                <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="70,20,70,0">
+                    <Button x:Name="btnSave" Text="{Binding LabelButtonSave}" BackgroundColor="{DynamicResource Verde}" HorizontalOptions="FillAndExpand" Clicked="btnSave_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</views:ToolbarPage>
