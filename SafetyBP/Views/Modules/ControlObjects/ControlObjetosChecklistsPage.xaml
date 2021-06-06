@@ -73,8 +73,6 @@
                                             <Entry Text="{Binding Model.Answer}"/>
                                         </StackLayout>
 
-
-
                                     </StackLayout>
 
                                     <Image Source="{DynamicResource PUNTOS}" Aspect="AspectFit" HeightRequest="32" HorizontalOptions="End">
@@ -88,53 +86,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-
-
-            <!--<ListView x:Name="listViewPreguntas" ItemsSource="{Binding Checklists}" SelectionMode="None" HasUnevenRows="True" SeparatorColor="{DynamicResource Azul}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid RowSpacing="0" Padding="10" BackgroundColor="{Binding ColorBackgroundQuestion}" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Pregunta}" TextColor="{Binding LabelColorQuestion}"/>
-                                <StackLayout x:Name="slContainerButtons" Grid.Row="1" IsVisible="{Binding Tipo, Converter={StaticResource TipoChecklistVisibleConverter}, ConverterParameter=button}" Orientation="Horizontal" BackgroundColor="{Binding ColorBackgroundQuestion}">
-                                        <Button x:Name="btnSI" 
-                                                Text="{Binding Tipo, Converter={StaticResource TipoChecklistTextConverter}, ConverterParameter=btnTxtSI}" 
-                                                BackgroundColor="{Binding ColorSI}" 
-                                                TextColor="{StaticResource Blanco}"
-                                                Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.SiCommand}" 
-                                                CommandParameter="{Binding .}" 
-                                                HorizontalOptions="FillAndExpand"/>
-                                        <Button x:Name="btnNO" 
-                                                Text="{Binding Tipo, Converter={StaticResource TipoChecklistTextConverter}, ConverterParameter=btnTxtNO}" 
-                                                BackgroundColor="{Binding ColorNO}" 
-                                                TextColor="{StaticResource Blanco}"
-                                                Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.NoCommand}" 
-                                                CommandParameter="{Binding .}"   
-                                                HorizontalOptions="FillAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" VerticalOptions="Center" IsVisible="{Binding Tipo, Converter={StaticResource TipoChecklistVisibleConverter}, ConverterParameter=picker}">
-                                        <Picker x:Name="Picker" ItemsSource="{Binding Tipo, Converter={StaticResource TipoChecklistItemSourceConverter}}" SelectedItem="{Binding Respuesta}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
-                                    </StackLayout>
-                                    <Image Source="{DynamicResource PUNTOS}" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="32" Grid.Row="1" Grid.Column="1">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference listViewPreguntas}, Path=BindingContext.FotoComentarioCommand}" CommandParameter="{Binding .}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-
-
             <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizarCommand}" BackgroundColor="{DynamicResource Verde}" TextColor="{StaticResource Blanco}" />
         </StackLayout>
     </ContentPage.Content>

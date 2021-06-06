@@ -16,7 +16,7 @@
 
             <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" HeightRequest="45" Margin="10,10,0,10" >
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource GrisOscuro}" TextColor="{StaticResource Blanco}" WidthRequest="150" TextTransform="Uppercase" />
+                    <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource GrisOscuro}" TextColor="{StaticResource Blanco}" WidthRequest="150" />
                 </StackLayout>
             </StackLayout>
             <StackLayout>

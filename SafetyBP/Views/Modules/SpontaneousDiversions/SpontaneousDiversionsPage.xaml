@@ -57,8 +57,8 @@
 
             <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" HeightRequest="45" Margin="0,20,0,0" >
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource GrisOscuro}" TextColor="{StaticResource Blanco}" WidthRequest="150" TextTransform="Uppercase" />
-                    <Button Text="{Binding LabelButtonContinueAdd}" Command="{Binding FollowingCommand}" BackgroundColor="{DynamicResource Verde}" TextColor="{StaticResource Blanco}" TextTransform="Uppercase" HorizontalOptions="FillAndExpand" />
+                    <Button Text="{Binding LabelButtonFinalize}" Command="{Binding FinalizeCommand}" BackgroundColor="{DynamicResource GrisOscuro}" TextColor="{StaticResource Blanco}" WidthRequest="150" />
+                    <Button Text="{Binding LabelButtonContinueAdd}" Command="{Binding FollowingCommand}" BackgroundColor="{DynamicResource Verde}" TextColor="{StaticResource Blanco}" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>

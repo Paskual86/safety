@@ -9,6 +9,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ActivityIndicator Color="Red" IsRunning="True" IsVisible="True" Grid.Row="1"  />
-        <Label Text="{Binding LabelMessageLoader}" TextColor="{StaticResource Blanco}" TextTransform="Uppercase" FontAttributes="Bold" Padding="0,0,0,10" Grid.Row="0 "/>
+        <Label Text="{Binding LabelMessageLoader}" TextColor="{StaticResource Blanco}" FontAttributes="Bold" Padding="0,0,0,10" Grid.Row="0 "/>
     </Grid>
 </popup:PopupPage>

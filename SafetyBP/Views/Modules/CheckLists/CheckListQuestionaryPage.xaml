@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:ToolbarPage  xmlns:views="clr-namespace:SafetyBP.Views"  
                     xmlns="http://xamarin.com/schemas/2014/forms"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-                    xmlns:converters="clr-namespace:SafetyBP.Converters" 
-                    xmlns:custom="clr-namespace:SafetyBP.Domain.Enums;assembly=SafetyBP.Domain"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:SafetyBP.Converters" xmlns:custom="clr-namespace:SafetyBP.Domain.Enums;assembly=SafetyBP.Domain" 
                     x:Class="SafetyBP.Views.Modules.CheckLists.CheckListQuestionaryPage"
                     Title="{Binding Title}">
     <ContentPage.Padding>
@@ -18,13 +16,11 @@
         <custom:CheckListQuestionTypes x:Key="CheckListQuestionTypes"/>
     </ContentPage.Resources>
 
-    
-    
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="10">
-                <Label Text="{Binding Sector }" TextTransform="Uppercase" TextColor="{DynamicResource NavigationPrimary}"/>
-                <Label Text="{Binding NameCheckList }" TextTransform="Uppercase"/>
+                <Label Text="{Binding Sector }" TextColor="{DynamicResource NavigationPrimary}"/>
+                <Label Text="{Binding NameCheckList }" />
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>

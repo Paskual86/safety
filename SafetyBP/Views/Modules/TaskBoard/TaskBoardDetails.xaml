@@ -25,7 +25,7 @@
         <StackLayout>
             
             <StackLayout Padding="10">
-                <Label Text="{Binding Task.Sector }" TextTransform="Uppercase" TextColor="{DynamicResource AzulFrancia}"/>
+                <Label Text="{Binding Task.Sector }" TextColor="{DynamicResource AzulFrancia}"/>
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>

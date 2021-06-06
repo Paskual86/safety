@@ -61,7 +61,7 @@
                     <Label Margin="0, 5, 0, 0" IsVisible="{Binding ShowUrl}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Link: " TextColor="{DynamicResource Negro}" TextTransform="Uppercase"/>
+                                <Span Text="Link: " TextColor="{DynamicResource Negro}" />
                                 <Span Text="{Binding Url}" TextColor="{DynamicResource AzulFrancia}" TextDecorations="Underline" FontAttributes="Italic" FontSize="18">
                                     <Span.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ClickCommand}"
