@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SafetyBP.Core.Interfaces;
 using SafetyBP.Domain.Entities;
 using SafetyBP.Domain.Models;
 using SafetyBP.Domain.Models.Modules.ControlObjects;
@@ -8,12 +9,14 @@ using SafetyBP.Persistance.EntityConfigurations.Modules.CorrectiveAction;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SafetyBP.Persistance
 {
     public class SafetyContext : DbContext
     {
         private readonly NLog.ILogger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private IDatabaseService DataBaseService => DependencyService.Get<IDatabaseService>();
 
         private readonly string _DatabasePath;
         public DbSet<SafetyTask> Tasks { get; set; }
@@ -47,7 +50,7 @@ namespace SafetyBP.Persistance
         public SafetyContext(string database)
         {
             SQLitePCL.Batteries_V2.Init();
-            _DatabasePath = database;
+            _DatabasePath = DataBaseService.GetDbPath();
 
             if (!File.Exists(_DatabasePath))
             {
@@ -70,14 +73,13 @@ namespace SafetyBP.Persistance
 
         public SafetyContext(DbContextOptions options) : base(options)
         {
-            SQLitePCL.Batteries_V2.Init();
-            _DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "safetybp2.db");
+            _DatabasePath = DataBaseService.GetDbPath();
             Database.Migrate();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Filename={_DatabasePath}");
+            optionsBuilder.UseSqlite($"Filename={DataBaseService.GetDbPath()}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

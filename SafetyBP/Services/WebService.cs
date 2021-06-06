@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SafetyBP.Domain.PreviousEntities;
+using SafetyBP.Domain.Entities;
 using SafetyBP.Dtos;
 using SafetyBP.Models.Common;
 using System;

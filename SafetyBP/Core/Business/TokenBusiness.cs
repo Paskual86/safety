@@ -1,5 +1,5 @@
-﻿using SafetyBP.Domain.Interfaces;
-using SafetyBP.Domain.PreviousEntities;
+﻿using SafetyBP.Domain.Entities;
+using SafetyBP.Domain.Interfaces;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 

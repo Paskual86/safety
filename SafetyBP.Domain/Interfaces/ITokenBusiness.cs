@@ -1,4 +1,4 @@
-﻿using SafetyBP.Domain.PreviousEntities;
+﻿using SafetyBP.Domain.Entities;
 using System.Threading.Tasks;
 
 namespace SafetyBP.Domain.Interfaces
