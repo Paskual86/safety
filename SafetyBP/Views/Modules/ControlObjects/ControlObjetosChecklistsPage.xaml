@@ -55,7 +55,7 @@
                                         <Label Text="{Binding Model.QuestionDescription}" Padding="5"/>
                                         <!-- Yes \ No question -->
                                         <StackLayout HorizontalOptions="FillAndExpand"
-                                                                IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 1 }" 
+                                                                IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 'A' }" 
                                                                 Orientation="Horizontal" HeightRequest="40">
 
                                             <Button Text="{Binding ButtonPositiveText}" BackgroundColor="{Binding ButtonPositiveColor }" TextColor="{StaticResource Blanco}"
@@ -65,11 +65,11 @@
                                                         Command="{Binding ButtonNegativeCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         </StackLayout>
 
-                                        <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 2 }" HeightRequest="40" >
+                                        <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 'B' }" HeightRequest="40" >
                                             <Picker x:Name="Picker" ItemsSource="{Binding Values }" ItemDisplayBinding="{Binding Description}" SelectedItem="{Binding ValueSelected}" />
                                         </StackLayout>
 
-                                        <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 3 }">
+                                        <StackLayout IsVisible="{Binding GroupType, Converter={StaticResource QuestionaryTypeConverter}, ConverterParameter = 'C' }">
                                             <Entry Text="{Binding Model.Answer}"/>
                                         </StackLayout>
 

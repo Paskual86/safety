@@ -3,6 +3,7 @@
     public class SafetyCameraResponse
     {
         public bool CameraNotAvailable { get; set; }
+        public bool PrivilegesNotGranted { get; set; }
         public string PathFile { get; set; }
         public string Content { get; set; }
 

@@ -114,7 +114,7 @@ namespace SafetyBP.Wrappers
                         {
                             if (parameter != null)
                             {
-                                Toaster.Short(GetTranslateValue(Data.ApplicationWordsEnum.PhotoIsRequired));
+                                //Toaster.Short(GetTranslateValue(Data.ApplicationWordsEnum.PhotoIsRequired));
                                 SaveCheckListInformation(checkList);
                             }
                         }),
