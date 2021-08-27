@@ -22,10 +22,8 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
-	<key>CFBundleIdentifier</key>
-	<string>safetybp.iOS.app</string>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>1.6</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -37,10 +35,12 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app needs access to microphone.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5</string>
+	<string>1.6</string>
 	<key>CFBundleDisplayName</key>
 	<string>SafetyControl</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleIdentifier</key>
+	<string>safetybp.iOS.app</string>
 </dict>
 </plist>
