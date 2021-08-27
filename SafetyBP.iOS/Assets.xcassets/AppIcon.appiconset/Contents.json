@@ -19,7 +19,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "adobespark (1).png",
+      "filename": "87x87.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
@@ -43,7 +43,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "launcher_foreground_adobespark.png",
+      "filename": "180x180.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"
@@ -67,7 +67,7 @@
       "idiom": "ipad"
     },
     {
-      "filename": "launcher_foreground_adobespark (5).png",
+      "filename": "58x58.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "ipad"
@@ -85,19 +85,19 @@
       "idiom": "ipad"
     },
     {
-      "filename": "launcher_foreground_adobespark (1).png",
+      "filename": "Image167x167.png",
       "size": "83.5x83.5",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "launcher_foreground_adobespark (3).png",
+      "filename": "76x76.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "launcher_foreground_adobespark (2).png",
+      "filename": "152x152.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
@@ -109,6 +109,7 @@
       "idiom": "ios-marketing"
     },
     {
+      "filename": "icon120x120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "car"

@@ -41,6 +41,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleIdentifier</key>
-	<string>safetybp.iOS.app</string>
+	<string>com.safetybp.safetyapp</string>
 </dict>
 </plist>
